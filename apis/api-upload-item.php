@@ -10,6 +10,25 @@ session_start();
 // }
 
 // echo json_encode($_FILES['item_image']);
+
+
+try {
+   
+   // Undefined | Multiple Files | $_FILES Corruption Attack
+   // If this request falls under any of them, treat it invalid.
+   if (
+       !isset($_FILES['item_image']['error']) ||
+       is_array($_FILES['item_image']['error'])
+   ) {
+       throw new RuntimeException('Invalid parameters.');
+   }
+} catch (RuntimeException $e) {
+
+   echo $e->getMessage();
+
+}
+
+
 header('Content-Type: text/plain; charset=utf-8');
 print_r($_FILES);
 
