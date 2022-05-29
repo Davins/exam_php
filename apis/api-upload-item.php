@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-require_once(__DIR__ . '/../globals.php');
+// require_once(__DIR__ . '/../globals.php');
+
+header('Content-Type: text/plain; charset=utf-8');
 
 // TODO validate will add for exam
 // if(!isset($_POST['submit'])){
