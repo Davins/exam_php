@@ -13,7 +13,7 @@ $q->bindValue(':user_email', $_POST['user_email']);
 $q->execute();
 $row = $q->fetch();
 
-
+$user = $row['user_name'];
 // validate that the email exists
 if(!$row){
     _res(400, ['info' => 'Email does not exists']);
@@ -28,6 +28,7 @@ $_to_email = $_POST['user_email'];
 
 // Template message to recover password
 $_message = "Hello, forgot the password?  <a href=http://localhost/new-password.php?key=$recovery_key>Click here to create a new one. </a>";
+
 require_once(__DIR__.'/../private/send_email.php');
 
 // Succesful email sent

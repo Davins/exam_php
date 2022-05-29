@@ -38,8 +38,6 @@ if(!in_array($_FILES['item_image']['fileExt'], $_FILES['item_image']['allowed'])
    _res(500, ['info' => 'Incorrect file extension.']);
 }
 
-
-
 $user_id = $_SESSION['user_id'];
 try {
    $image_id = uniqid();
