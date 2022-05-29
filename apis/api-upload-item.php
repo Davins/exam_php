@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// require_once(__DIR__ . '/../globals.php');
+require_once(__DIR__ . '/../globals.php');
 
 // TODO validate will add for exam
 // if(!isset($_POST['submit'])){
