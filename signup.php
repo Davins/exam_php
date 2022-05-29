@@ -25,7 +25,7 @@ require_once ('components/header.php');
             <input name="user_phone" type="number" placeholder="Enter a valid phone number" class="form-phone">
             <p class="error-phone"></p>
             <label for="password">Password</label>
-            <input name="user_password" type="password" placeholder="At least 8 characters" class="form-password">
+            <input name="password" type="password" placeholder="At least 8 characters" class="form-password">
             <p class="pw-icon">
                 <span> <img class="info-icon" src="images/info.svg" alt=""></span> Passwords must be atleast 8 characters
             </p>

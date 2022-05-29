@@ -34,15 +34,16 @@ if (!filter_var($_POST['user_email'], FILTER_VALIDATE_EMAIL)) {
 
 
 $db = _api_db();
-
+$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 try {
 
-    $q = $db->prepare('UPDATE users SET user_name = :user_name, user_last_name = :user_last_name, user_email = :user_email, user_phone = :user_phone WHERE user_id = :user_id');
+    $q = $db->prepare('UPDATE users SET user_name = :user_name, user_last_name = :user_last_name, user_email = :user_email, user_phone = :user_phone, user_password = :user_password  WHERE user_id = :user_id');
     $q->bindValue(':user_id', $_SESSION['user_id']);
     $q->bindValue(':user_name', $_POST['user_name']);
     $q->bindValue(':user_last_name', $_POST['user_last_name']);
     $q->bindValue(':user_email', $_POST['user_email']);
     $q->bindValue(':user_phone', $_POST['user_phone']);
+    $q->bindValue(':user_password', $password);
     $q->execute();
 
     $_SESSION['user_name'] = $_POST['user_name'];
