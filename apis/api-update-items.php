@@ -9,19 +9,19 @@ require_once(__DIR__ . '/../globals.php');
 $db = _api_db();
 
 
-if ($_FILES['item_image']['error']) {
+if ($_FILES['item-image-edit']['error']) {
     // header('Location: /profile');
-    echo $_FILES['item_image']['error'];
+    echo $_FILES['item-image-edit']['error'];
     exit();
 }
 
 // create a unique ID for each image
-$_FILES['item_image']['fileExt'] = mime_content_type($_FILES['item_image']['tmp_name']);
-$_FILES['item_image']['fileExt'] = explode('/', $_FILES['item_image']['fileExt']);
-$_FILES['item_image']['fileExt'] = strtolower(end($_FILES['item_image']['fileExt']));
-$_FILES['item_image']['allowed'] = array('jpg', 'jpeg', 'png', 'gif');
+$_FILES['item-image-edit']['fileExt'] = mime_content_type($_FILES['item-image-edit']['tmp_name']);
+$_FILES['item-image-edit']['fileExt'] = explode('/', $_FILES['item-image-edit']['fileExt']);
+$_FILES['item-image-edit']['fileExt'] = strtolower(end($_FILES['item-image-edit']['fileExt']));
+$_FILES['item-image-edit']['allowed'] = array('jpg', 'jpeg', 'png', 'gif');
 
-if (!in_array($_FILES['item_image']['fileExt'], $_FILES['item_image']['allowed'])) {
+if (!in_array($_FILES['item-image-edit']['fileExt'], $_FILES['item-image-edit']['allowed'])) {
     _res(500, ['info' => 'Incorrect file extension.']);
 }
 
@@ -51,10 +51,10 @@ try {
 
         chmod($destination, 0755); //Change the file permissions if allowed
 
-        $_FILES['item_image']['name'] = $image_id . "." . $_FILES['item_image']['fileExt'];
-        $FileDestination = "$destination" . "/" . $_FILES['item_image']['name'];
+        $_FILES['item-image-edit']['name'] = $image_id . "." . $_FILES['item-image-edit']['fileExt'];
+        $FileDestination = "$destination" . "/" . $_FILES['item-image-edit']['name'];
         // move files to item-images folder on upload
-        move_uploaded_file($_FILES['item_image']['tmp_name'], $FileDestination);
+        move_uploaded_file($_FILES['item-image-edit']['tmp_name'], $FileDestination);
     }
 
 

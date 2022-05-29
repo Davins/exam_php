@@ -74,7 +74,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
         <span class="close-btn">X</span>
         <h2>Item Name</h2>
         <div class="form-wrapper">
-            <form class="update-form" onsubmit="return false">
+            <form class="update-form" onsubmit="return false" enctype="multipart/form-data">
                 <label for="item-name-edit">Item Name</label>
                 <input name="item-name-edit" id="item-name-edit" value="">
                 <label for="item-desc-edit">Item Description</label>
