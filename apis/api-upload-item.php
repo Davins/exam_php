@@ -24,7 +24,7 @@ try {
    }
 } catch (RuntimeException $e) {
 
-   echo $e->getMessage();
+   echo "error echo", $e->getMessage();
 
 }
 
