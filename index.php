@@ -3,7 +3,6 @@ $_title = 'Welcome to Examon';
 require_once('components/header.php');
 $data = file_get_contents(__DIR__.'/shops/shop-1.txt');
 $json = json_decode($data);
-echo $_GET['lan'];
 ?>
 
 
