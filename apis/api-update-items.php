@@ -8,6 +8,23 @@ require_once(__DIR__ . '/../globals.php');
 
 $db = _api_db();
 
+
+if ($_FILES['item_image']['error']) {
+    // header('Location: /profile');
+    echo $_FILES['item_image']['error'];
+    exit();
+}
+
+// create a unique ID for each image
+$_FILES['item_image']['fileExt'] = mime_content_type($_FILES['item_image']['tmp_name']);
+$_FILES['item_image']['fileExt'] = explode('/', $_FILES['item_image']['fileExt']);
+$_FILES['item_image']['fileExt'] = strtolower(end($_FILES['item_image']['fileExt']));
+$_FILES['item_image']['allowed'] = array('jpg', 'jpeg', 'png', 'gif');
+
+if (!in_array($_FILES['item_image']['fileExt'], $_FILES['item_image']['allowed'])) {
+    _res(500, ['info' => 'Incorrect file extension.']);
+}
+
 try {
     if (file_exists($_FILES['item-image-edit']['tmp_name'])) {
 
@@ -30,7 +47,14 @@ try {
     $q->execute();
     $db->commit();
     if (file_exists($_FILES['item-image-edit']['tmp_name'])) {
-        move_uploaded_file($_FILES['item-image-edit']['tmp_name'], __DIR__ . '/../item-images/' . $image_id);
+        $destination = $_SERVER['DOCUMENT_ROOT'] . '/item-images';
+
+        chmod($destination, 0755); //Change the file permissions if allowed
+
+        $_FILES['item_image']['name'] = $image_id . "." . $_FILES['item_image']['fileExt'];
+        $FileDestination = "$destination" . "/" . $_FILES['item_image']['name'];
+        // move files to item-images folder on upload
+        move_uploaded_file($_FILES['item_image']['tmp_name'], $FileDestination);
     }
 
 

@@ -58,12 +58,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
         <div class="your-uploads">
             <h3 class="item-name" data-itemId=' . $item['item_id'] .'> '. $item['item_name'] .'</h3>
             <button class="sign-up-btn open-modal">Edit Item</button>
-
-
-            
-
              <img class="item-image" src='. glob('./item-images/' . $item['item_image'] . ".*")[0] .' />
-
             <p class="item-desc">'. $item['item_desc'] .'</p>
             <p class="item-price">'. $item['item_price'] .' £</p>
          
