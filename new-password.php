@@ -10,7 +10,7 @@ require_once ('components/header.php');
 <div class="form-wrapper">
 <form id="form-sign-up" onsubmit="return false">
 <label for="email">Email</label>
-<input id="email" name="user_email" type="email" value="<?=$_SESSION['user_email']?>">
+<input id="email" name="user_email" type="email">
 <label for="password">new password</label>
 <input type="password" id="password" name="password">
 <label for="password-2">re-enter new password</label>
