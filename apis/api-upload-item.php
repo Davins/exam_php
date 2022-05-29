@@ -9,9 +9,9 @@ require_once(__DIR__ . '/../globals.php');
 //    exit();
 // }
 
-if($_FILES['File']['error']){
+if($_FILES['item_image']['error']){
    // header('Location: /profile');
-   echo $_FILES['File']['error'];
+   echo $_FILES['item_image']['error'];
    exit();
 }
 
