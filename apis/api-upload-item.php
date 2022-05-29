@@ -12,6 +12,10 @@ session_start();
 // echo json_encode($_FILES['item_image']);
 
 
+$db = _api_db();
+
+print_r($_POST);
+
 try {
    
    // Undefined | Multiple Files | $_FILES Corruption Attack
@@ -27,6 +31,15 @@ try {
    echo "error echo", $e->getMessage();
 
 }
+
+
+if (file_exists($_FILES['item_image']['tmp_name'])) {
+
+   $image_id = uniqid();
+} else {
+   $image_id = $_POST['item-image'];
+}
+
 
 
 header('Content-Type: text/plain; charset=utf-8');
@@ -45,7 +58,6 @@ if($_FILES['item_image']['error']){
 }
 
 
-$db = _api_db();
 // create a unique ID for each image
 
 $user_id = $_SESSION['user_id'];
