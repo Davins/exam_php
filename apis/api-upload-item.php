@@ -9,6 +9,14 @@ require_once(__DIR__ . '/../globals.php');
 //    exit();
 // }
 
+// echo json_encode($_FILES['item_image']);
+print_r($_FILES['item_image']);
+
+if(!isset($_FILES['item_image'])){
+   echo "no image";
+   exit();
+}
+
 if($_FILES['item_image']['error']){
    // header('Location: /profile');
    echo $_FILES['item_image']['error'];
