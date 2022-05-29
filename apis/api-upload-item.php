@@ -17,7 +17,6 @@ $db = _api_db();
 print_r($_POST);
 
 try {
-   
    // Undefined | Multiple Files | $_FILES Corruption Attack
    // If this request falls under any of them, treat it invalid.
    if (
@@ -27,11 +26,8 @@ try {
        throw new RuntimeException('Invalid parameters.');
    }
 } catch (RuntimeException $e) {
-
    echo "error echo", $e->getMessage();
-
 }
-
 
 if (file_exists($_FILES['item_image']['tmp_name'])) {
 
@@ -39,11 +35,6 @@ if (file_exists($_FILES['item_image']['tmp_name'])) {
 } else {
    $image_id = $_POST['item-image'];
 }
-
-
-
-header('Content-Type: text/plain; charset=utf-8');
-print_r($_FILES);
 
 
 if(!isset($_FILES['item_image'])){
@@ -57,8 +48,17 @@ if($_FILES['item_image']['error']){
    exit();
 }
 
-
 // create a unique ID for each image
+$_FILES['item_image']['fileExt'] = mime_content_type($_FILES['File']['tmp_name']);
+$_FILES['item_image']['fileExt'] = explode('/', $_FILES['File']['fileExt']);
+$_FILES['item_image']['fileExt'] = strtolower(end($_FILES['File']['fileExt']));
+$_FILES['item_image']['allowed'] = array('jpg', 'jpeg', 'png', 'gif');
+
+if(!in_array($_FILES['item_image']['fileExt'], $_FILES['item_image']['allowed'])){
+   _res(500, ['info' => 'Incorrect file extension.']);
+}
+
+
 
 $user_id = $_SESSION['user_id'];
 try {
@@ -75,17 +75,14 @@ try {
 
    $q->execute();
 
-   $destination = $_SERVER['DOCUMENT_ROOT'].'/item-images/';
+   $destination = $_SERVER['DOCUMENT_ROOT'].'/item-images';
 
    chmod($destination,0755); //Change the file permissions if allowed
 
-   $_FILES['item_image']['tmp_name'] = $image_id;
+   $_FILES['item_image']['name'] = $image_id.".".$_FILES['item_image']['fileExt'];
+   $FileDestination = "$destination"."/".$_FILES['File']['name'];
    // move files to item-images folder on upload
-   move_uploaded_file($_FILES['item_image']['tmp_name'], $destination);
-
-   echo $destination;
-   echo $_FILES['item_image']['tmp_name'];
-
+   move_uploaded_file($_FILES['item_image']['tmp_name'], $FileDestination);
    // Success
    _res(200, ['info' => 'item created']);
 
