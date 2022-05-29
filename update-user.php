@@ -28,8 +28,6 @@ require_once ('components/header.php');
             <label for="email">Phone Number</label>
             <input class="form-phone" name="user_phone" type="text" placeholder="" value="<?= $_SESSION['user_phone'];?>">
             <p class="wrong-phone"></p>
-            <a href="forgot-password.php">New Password?</a>
-            <p class="forgot-pw"></p>
             <button class="sign-up-btn" onclick="updateUser()">Update</button>
 
         </form>
