@@ -33,7 +33,7 @@ if (file_exists($_FILES['item_image']['tmp_name'])) {
 
    $image_id = uniqid();
 } else {
-   $image_id = $_POST['item-image'];
+   $image_id = $_POST['item_image'];
 }
 
 
@@ -49,9 +49,9 @@ if($_FILES['item_image']['error']){
 }
 
 // create a unique ID for each image
-$_FILES['item_image']['fileExt'] = mime_content_type($_FILES['File']['tmp_name']);
-$_FILES['item_image']['fileExt'] = explode('/', $_FILES['File']['fileExt']);
-$_FILES['item_image']['fileExt'] = strtolower(end($_FILES['File']['fileExt']));
+$_FILES['item_image']['fileExt'] = mime_content_type($_FILES['item_image']['tmp_name']);
+$_FILES['item_image']['fileExt'] = explode('/', $_FILES['item_image']['fileExt']);
+$_FILES['item_image']['fileExt'] = strtolower(end($_FILES['item_image']['fileExt']));
 $_FILES['item_image']['allowed'] = array('jpg', 'jpeg', 'png', 'gif');
 
 if(!in_array($_FILES['item_image']['fileExt'], $_FILES['item_image']['allowed'])){
@@ -80,7 +80,7 @@ try {
    chmod($destination,0755); //Change the file permissions if allowed
 
    $_FILES['item_image']['name'] = $image_id.".".$_FILES['item_image']['fileExt'];
-   $FileDestination = "$destination"."/".$_FILES['File']['name'];
+   $FileDestination = "$destination"."/".$_FILES['item_image']['name'];
    // move files to item-images folder on upload
    move_uploaded_file($_FILES['item_image']['tmp_name'], $FileDestination);
    // Success
