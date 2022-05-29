@@ -33,10 +33,6 @@ try {
         $image_id = $_POST['item-image'];
     }
 
-
-
-
-
     $db->beginTransaction();
     $q = $db->prepare('UPDATE items SET item_name = :item_name, item_desc = :item_desc, item_price = :item_price, item_image = :item_image WHERE item_id = :item_id');
     $q->bindValue(':item_id', $_POST['item_id']);
@@ -46,6 +42,8 @@ try {
     $q->bindValue(':item_image', $image_id);
     $q->execute();
     $db->commit();
+
+    
     if (file_exists($_FILES['item-image-edit']['tmp_name'])) {
         $destination = $_SERVER['DOCUMENT_ROOT'] . '/item-images';
 
@@ -56,12 +54,6 @@ try {
         // move files to item-images folder on upload
         move_uploaded_file($_FILES['item-image-edit']['tmp_name'], $FileDestination);
     }
-
-
-
-
-
-
 
     _res(200, ['info' => 'items updated']);
 } catch (Exception $ex) {

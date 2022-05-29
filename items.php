@@ -105,6 +105,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
             method: "POST",
             body: new FormData(form),
         });
+        console.log(await conn)
         const res = await conn.json()
         console.log(res)
         location.href = "/items.php";

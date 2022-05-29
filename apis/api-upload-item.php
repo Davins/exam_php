@@ -3,18 +3,8 @@ session_start();
 
 require_once(__DIR__ . '/../globals.php');
 
-// TODO validate will add for exam
-// if(!isset($_POST['submit'])){
-//    header('Location: /profile');
-//    exit();
-// }
-
-// echo json_encode($_FILES['item_image']);
-
 
 $db = _api_db();
-
-print_r($_POST);
 
 try {
    // Undefined | Multiple Files | $_FILES Corruption Attack
@@ -26,21 +16,16 @@ try {
        throw new RuntimeException('Invalid parameters.');
    }
 } catch (RuntimeException $e) {
-   echo "error echo", $e->getMessage();
+   _res(500, ['info' => $e->getMessage()]);
 }
 
-
-
-
 if(!isset($_FILES['item_image'])){
-   echo "no image";
-   exit();
+   _res(500, ['info' => "no image"]);
 }
 
 if($_FILES['item_image']['error']){
    // header('Location: /profile');
-   echo $_FILES['item_image']['error'];
-   exit();
+   _res(500, ['info' => $_FILES['item_image']['error']]);
 }
 
 // create a unique ID for each image
