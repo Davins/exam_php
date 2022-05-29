@@ -59,9 +59,9 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
             <button class='sign-up-btn open-modal'>Edit Item</button>
 
 
-            '<?=glob('./item-images/' . {$item['item_image']} . '.*')[0]?>'
+            
 
-
+             <img class=''item-image src='<?=glob('./item-images/' . {$item['item_image']} . '.*')[0]?>'/>
 
 
             <p class='item-desc'>{$item['item_desc']}</p>
