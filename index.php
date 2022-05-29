@@ -16,11 +16,12 @@ $json = json_decode($data);
 
         <?php
         foreach ($json as $item) {
+            
             echo    "<article class='shop-item'>
                     <h2>$item->title_en</h2>
                     <img src='https://coderspage.com/2021-F-Web-Dev-Images/$item->image'>
                     <p class='item-desc'>$item->desc_en</p>
-                    <h3>$item->price</h3>
+                    <h3>$item->price_en</h3>
                     </article>";
         }
         ?>
