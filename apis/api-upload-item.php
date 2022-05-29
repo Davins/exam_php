@@ -9,10 +9,11 @@ require_once(__DIR__ . '/../globals.php');
 //    exit();
 // }
 
-// if($_FILES['File']['error']){
-//    header('Location: /profile');
-//    exit();
-// }
+if($_FILES['File']['error']){
+   // header('Location: /profile');
+   echo $_FILES['File']['error'];
+   exit();
+}
 
 $db = _api_db();
 // create a unique ID for each image
