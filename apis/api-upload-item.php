@@ -25,7 +25,7 @@ try {
    $q->execute();
 
    // move files to item-images folder on upload
-   move_uploaded_file($_FILES['item_img']['tmp_name'], __DIR__ . '/../item-images/' . $image_id);
+   file_put_contents($_FILES['item_img']['tmp_name'], __DIR__ . '/../item-images/' . $image_id);
    // Success
    _res(200, ['info' => 'item created']);
 
