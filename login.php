@@ -29,6 +29,8 @@ require_once("components/header.php");
 
     </form>
     <div class="line-wrapper">
+    <a href="forgot-password.php">Forgot your Password?</a>
+            <p class="forgot-pw"></p>
       <p>New to Examon?</p>
 
     </div>
