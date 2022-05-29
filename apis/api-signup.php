@@ -106,7 +106,7 @@ try {
   $_to_email = 'webdevdd95@gmail.com';
   $_message = "Thank you for signing up, <a href=http://localhost/validate-user.php?key=$verification_key>Click here for e-mail validation.</a>";
   require_once(__DIR__ ."/../private/send_email.php");
-  _res(200, ['info' => 'user created', 'user_id' => intval($user_id)]);
+  _res(200, ['info' => 'user created', 'user_id' => intval($user_id), 'status' => 200]);
 } catch (Exception $ex) {
 
   // If something is wrong with the API, send 500

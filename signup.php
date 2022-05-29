@@ -127,7 +127,7 @@ function handleResponse(response) {
                     inputEmail.style.outline = "none";
                 });
             } else {
-                alert(response.info)
+                console.error(response.info)
                 return
             }
         }
@@ -166,7 +166,7 @@ function handleResponse(response) {
                     inputEmail.style.outline = "none";
                 });
             } else {
-                alert(response.info)
+                console.error(response.info)
                 return
             }
         }
