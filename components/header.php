@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once(__DIR__."/../dictionary.php");
+$lan = $_GET['lan'] ?? 'en';
 ?>
 
 <!DOCTYPE html>
@@ -40,24 +42,24 @@ session_start();
         <p class="signed-name">
                 <?php
                 if (isset($_SESSION['user_name'])) {
-                    echo ' <a class="settings" href="profile.php">Your profile</a>';
+                    echo ' <a class="settings" href="profile.php">'.$text['3'][$lan].'</a>';
                 }
                 ?>
             </p>
             <p class="signed-name">
                 <?php
                 if (isset($_SESSION['user_name'])) {
-                    echo 'You are signed in as ';
+                    echo $text['4'][$lan];
                     echo $_SESSION['user_name'];
-                    echo ' <a class="settings" href="bridges/logout.php">Log out</a>';
+                    echo ' <a class="settings" href="bridges/logout.php">'.$text['5'][$lan].'</a>';
                 }
                 ?>
             </p>
             <p class="signed-name">
                 <?php
                 if (!isset($_SESSION['user_name'])) {
-                    echo 'You are not signed in';
-                    echo '<a class="nav-sign-in" href="login.php">Click here to sign in</a>';
+                    echo $text['1'][$lan];
+                    echo '<a class="nav-sign-in" href="login.php">'.$text['2'][$lan].'</a>';
                 }
                 ?>
             </p>

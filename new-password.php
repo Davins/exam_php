@@ -35,7 +35,7 @@ async function sendRecovery(){
     if(conn.ok){
 document.querySelector(".info").textContent ="changed info"
       setTimeout(function(){
-location.href="profile.php"
+location.href="index.php"
       },3000)
     }
 

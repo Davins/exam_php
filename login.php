@@ -28,9 +28,9 @@ require_once("components/header.php");
       <button class="sign-up-btn" type="submit">Continue</button>
 
     </form>
+    
     <div class="line-wrapper">
-    <a href="forgot-password.php">Forgot your Password?</a>
-            <p class="forgot-pw"></p>
+
       <p>New to Examon?</p>
 
     </div>
@@ -39,11 +39,15 @@ require_once("components/header.php");
   <div class="btn-wrapper">
     <button class="create-btn" onclick="location.href= 'signup.php'">Create your Examon Account </button>
   </div>
+  <div>
+    <p class="forgot-pw"></p>
+      <a href="forgot-password.php">Forgot your Password?</a>
+    </div>
 </section>
 <script>
   function handleResponse(response) {
     if (response.status == 200) {
-      location.href="profile.php"
+      location.href = "profile.php"
       return
     }
     const formPw = document.querySelector(".form-pw");
@@ -74,32 +78,32 @@ require_once("components/header.php");
   async function login(form) {
     //const form=document.querySelector("#form-sign-up")
     //console.log(form, new FormData(form))
-    try { 
+    try {
       var formData = new FormData(form),
         result = {};
 
-    for (var entry of formData.entries())
-    {
+      for (var entry of formData.entries()) {
         result[entry[0]] = entry[1];
-    }
-    result = JSON.stringify(result)
-    console.log(result);
-      let conn = await fetch("apis/api-login.php", {
-      method: "POST",
-      body: result,
-      headers:{
-        'Content-Type': 'application/json'
       }
-    })
-    let response = await conn.json()
-    handleResponse(response)
-      
-    } catch (error) {console.log(error)
-      
-    }
-   
+      result = JSON.stringify(result)
+      console.log(result);
+      let conn = await fetch("apis/api-login.php", {
+        method: "POST",
+        body: result,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      let response = await conn.json()
+      handleResponse(response)
 
-    
+    } catch (error) {
+      console.log(error)
+
+    }
+
+
+
 
   }
 </script>
