@@ -40,6 +40,10 @@ try {
    $_FILES['item_image']['tmp_name'] = $image_id;
    // move files to item-images folder on upload
    move_uploaded_file($_FILES['item_image']['tmp_name'], $destination);
+
+   echo $destination;
+   echo $_FILES['item_image']['tmp_name'];
+
    // Success
    _res(200, ['info' => 'item created']);
 
