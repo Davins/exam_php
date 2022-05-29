@@ -30,7 +30,9 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
     <h1>Upload your own items</h1>
 </div>
 <div class="form-wrapper">
-    <form id="item-form" onsubmit="return false">
+    <!-- <form id="item-form" onsubmit="return false"> -->
+    <form id="item-form" action="apis/api-upload-item.php" method="post">
+
         <label for="item-name">Item Name</label>
         <input type="text" id="item-name" name="item_name">
         <label for="item-desc">Item Description</label>
@@ -39,7 +41,9 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
         <input type="number" id="item-price" name="item_price" step=".01">
         <label for="item-image">Item Image</label>
         <input type="file" size="60" id="item-image" name="item_image">
-        <button class="sign-up-btn" onclick="upload_item()">Add Item</button>
+        <!-- <button class="sign-up-btn" onclick="upload_item()">Add Item</button> -->
+        <button class="sign-up-btn" type="submit">Add Item</button>
+
     </form>
 </div>
 
