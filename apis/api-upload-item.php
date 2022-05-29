@@ -33,9 +33,6 @@ header('Content-Type: text/plain; charset=utf-8');
 print_r($_FILES);
 
 
-
-print_r($_FILES['item_image']);
-
 if(!isset($_FILES['item_image'])){
    echo "no image";
    exit();
