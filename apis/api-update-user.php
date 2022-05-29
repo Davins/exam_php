@@ -44,7 +44,7 @@ try {
     $q->bindValue(':user_email', $_POST['user_email']);
     $q->bindValue(':user_phone', $_POST['user_phone']);
     $q->execute();
-    session_start();
+
     $_SESSION['user_name'] = $_POST['user_name'];
     $_SESSION['user_last_name'] = $_POST['user_last_name'];
     $_SESSION['user_email'] = $_POST['user_email'];
