@@ -4,7 +4,15 @@ session_start();
 require_once(__DIR__ . '/../globals.php');
 
 // TODO validate will add for exam
+// if(!isset($_POST['submit'])){
+//    header('Location: /profile');
+//    exit();
+// }
 
+// if($_FILES['File']['error']){
+//    header('Location: /profile');
+//    exit();
+// }
 
 $db = _api_db();
 // create a unique ID for each image
@@ -24,8 +32,14 @@ try {
 
    $q->execute();
 
+   
+   $destination = $_SERVER['DOCUMENT_ROOT'].'/item-images/';
+
+   chmod($destination,0755); //Change the file permissions if allowed
+
+   $_FILES['item_image']['tmp_name'] = $image_id;
    // move files to item-images folder on upload
-   file_put_contents($_FILES['item_image']['tmp_name'], __DIR__ . '/../item-images/' . $image_id);
+   move_uploaded_file($_FILES['item_image']['tmp_name'], $destination);
    // Success
    _res(200, ['info' => 'item created']);
 
