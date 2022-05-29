@@ -62,7 +62,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
 
             
 
-             <img class="item-image" src='. glob('./item-images/' . $item['item_image'] . ".*")[0] .' />
+             <img class="item-image" src='. glob('./item-images/' . $item['item_image'] . ".*") .' />
 
             <p class="item-desc">'. $item['item_desc'] .'</p>
             <p class="item-price">'. $item['item_price'] .' £</p>
