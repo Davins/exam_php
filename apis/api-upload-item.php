@@ -29,12 +29,7 @@ try {
    echo "error echo", $e->getMessage();
 }
 
-if (file_exists($_FILES['item_image']['tmp_name'])) {
 
-   $image_id = uniqid();
-} else {
-   $image_id = $_POST['item_image'];
-}
 
 
 if(!isset($_FILES['item_image'])){
