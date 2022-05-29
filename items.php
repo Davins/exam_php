@@ -31,7 +31,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
 </div>
 <div class="form-wrapper">
     <!-- <form id="item-form" onsubmit="return false"> -->
-    <form id="item-form" action="apis/api-upload-item.php" method="post" enctype="multipart/form-data">
+    <form id="item-form" action="apis/api-upload-item.php" method="POST" enctype="multipart/form-data">
 
         <label for="item-name">Item Name</label>
         <input type="text" id="item-name" name="item_name">
@@ -40,7 +40,7 @@ $items = json_decode(file_get_contents_curl($itemApi), true);
         <label for="item-price">Item Price</label>
         <input type="number" id="item-price" name="item_price" step=".01">
         <label for="item-image">Item Image</label>
-        <input type="file" id="item-image" name="item_image">
+        <input type="file" id="item-image" name="image">
         <!-- <button class="sign-up-btn" onclick="upload_item()">Add Item</button> -->
         <button class="sign-up-btn" type="submit">Add Item</button>
 
