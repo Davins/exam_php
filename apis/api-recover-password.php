@@ -13,7 +13,7 @@ $q->bindValue(':user_email', $_POST['user_email']);
 $q->execute();
 $row = $q->fetch();
 
-$user = $row['user_name'];
+$name = $row['user_name'];
 // validate that the email exists
 if(!$row){
     _res(400, ['info' => 'Email does not exists']);
