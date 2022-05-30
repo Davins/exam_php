@@ -10,7 +10,6 @@ $db = _api_db();
 
 
 if ($_FILES['item-image-edit']['error']) {
-    // header('Location: /profile');
     echo $_FILES['item-image-edit']['error'];
     exit();
 }
